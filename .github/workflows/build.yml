@@ -20,7 +20,7 @@ jobs:
 
       - name: Clone Pico SDK
         run: |
-          git clone https://github.com/raspberrypi/pico-sdk.git
+          git clone https://github.com/raspberrypi/pico-sdk.git pico-sdk
           cd pico-sdk
           git submodule update --init
 
@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DPICO_SDK_PATH=../pico-sdk
+          cmake .. -DPICO_SDK_PATH=${{ github.workspace }}/pico-sdk
 
       - name: Build Project
         run: |
